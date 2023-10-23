@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecebimentoPix));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            lblAguardandoPag = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -55,11 +56,24 @@
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
+            // lblAguardandoPag
+            // 
+            lblAguardandoPag.AutoSize = true;
+            lblAguardandoPag.BackColor = Color.White;
+            lblAguardandoPag.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAguardandoPag.ForeColor = Color.Red;
+            lblAguardandoPag.Location = new Point(71, 556);
+            lblAguardandoPag.Name = "lblAguardandoPag";
+            lblAguardandoPag.Size = new Size(247, 25);
+            lblAguardandoPag.TabIndex = 2;
+            lblAguardandoPag.Text = "Aguardando pagamento...";
+            // 
             // frmRecebimentoPix
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(486, 679);
+            Controls.Add(lblAguardandoPag);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Name = "frmRecebimentoPix";
@@ -68,11 +82,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Label lblAguardandoPag;
     }
 }

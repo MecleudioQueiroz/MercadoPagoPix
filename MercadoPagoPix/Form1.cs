@@ -56,7 +56,7 @@ namespace MercadoPagoPix
             {
 
 
-                frmRecebimentoPix rec = new frmRecebimentoPix(ms);
+                frmRecebimentoPix rec = new frmRecebimentoPix(ms, payment, cliente);
                 rec.Show();
                 //pictureBox1.Image = Image.FromStream(ms);
 
@@ -75,16 +75,12 @@ namespace MercadoPagoPix
         {
             MercadoPago();
         }
-
         private async void btnAtualiza_Click(object sender, EventArgs e)
         {
             //var resut = payment.StatusDetail;
-            MercadoPagoConfig.AccessToken = "APP_USR-1720662152161752-090102-3cb06a9b706e27e712b387bf37108af3-111665071";
+            //MercadoPagoConfig.AccessToken = "APP_USR-1720662152161752-090102-3cb06a9b706e27e712b387bf37108af3-111665071";
 
-            long id = 65746162332/*(long)payment.Id*/;
-
-           var cli = await cliente.GetAsync(id);
-            MessageBox.Show("pagamento: "+ cli.Status);
+            
         }
     }
 }
