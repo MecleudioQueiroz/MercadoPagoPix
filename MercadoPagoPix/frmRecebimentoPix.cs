@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,32 +37,32 @@ namespace MercadoPagoPix
             segundos++;
             lblSegundos.Text = segundos.ToString();
         }
-
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            segundos++;
+            lblSegundos.Text = segundos.ToString();
+            if (segundos > 7)
+            {
+                this.Close();
+            }
+        }
         public async void Status()
         {
             long id = (long)_payment.Id;
             var cli = await _cliente.GetAsync(id);
 
-            while (segundos < 20/*cli.Status == "pending"*/)
+            while (cli.Status == "pending")
             {
-                //cli = await _cliente.GetAsync(id);
-                segundos++;
+                cli = await _cliente.GetAsync(id);
             }
-
             lblSegundos.ForeColor = Color.Green;
             lblAbre.ForeColor = Color.Green;
             lblFecha.ForeColor = Color.Green;
             lblAguardandoPag.ForeColor = Color.Green;
             lblAguardandoPag.Text = "Pagamento recebido com sucesso!";
-            segundos = 1;
-            while (segundos < 4)
-            {
-                segundos++;
-            }
-            //MessageBox.Show("Pagamento Aprovado com sucesso!", "Aviso");
-            this.Close();
             timer1.Enabled = false;
+            segundos = 0;
+            timer2.Enabled = true;
         }
-
     }
 }
