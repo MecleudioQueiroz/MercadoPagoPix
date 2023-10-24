@@ -17,6 +17,7 @@ namespace MercadoPagoPix
         MemoryStream ms;
         Payment _payment;
         PaymentClient _cliente;
+        int segundos = 0;
         public frmRecebimentoPix(MemoryStream _ms, Payment payment, PaymentClient cliente)
         {
             InitializeComponent();
@@ -26,21 +27,41 @@ namespace MercadoPagoPix
             pictureBox2.Image = Image.FromStream(ms);
             Status();
         }
+        private void frmRecebimentoPix_Load(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            segundos++;
+            lblSegundos.Text = segundos.ToString();
+        }
 
         public async void Status()
         {
             long id = (long)_payment.Id;
             var cli = await _cliente.GetAsync(id);
 
-            while (cli.Status == "pending")
+            while (segundos < 20/*cli.Status == "pending"*/)
             {
-                cli = await _cliente.GetAsync(id);
+                //cli = await _cliente.GetAsync(id);
+                segundos++;
             }
 
-            cli.
-
-           // MessageBox.Show("Pagamento Aprovado com sucesso!", "Aviso");
+            lblSegundos.ForeColor = Color.Green;
+            lblAbre.ForeColor = Color.Green;
+            lblFecha.ForeColor = Color.Green;
+            lblAguardandoPag.ForeColor = Color.Green;
+            lblAguardandoPag.Text = "Pagamento recebido com sucesso!";
+            segundos = 1;
+            while (segundos < 4)
+            {
+                segundos++;
+            }
+            //MessageBox.Show("Pagamento Aprovado com sucesso!", "Aviso");
             this.Close();
+            timer1.Enabled = false;
         }
+
     }
 }

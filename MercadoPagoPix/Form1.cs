@@ -22,8 +22,8 @@ namespace MercadoPagoPix
         decimal valor = 0.01M;
         public async void MercadoPago()
         {
-            MercadoPagoConfig.AccessToken = "APP_USR-1720662152161752-090102-3cb06a9b706e27e712b387bf37108af3-111665071";
-            //MercadoPagoConfig.AccessToken = "TEST-1720662152161752-090102-822b8698386e6902f87b84fabc54080a-111665071";
+            //MercadoPagoConfig.AccessToken = "APP_USR-1720662152161752-090102-3cb06a9b706e27e712b387bf37108af3-111665071";
+            MercadoPagoConfig.AccessToken = "TEST-1720662152161752-090102-822b8698386e6902f87b84fabc54080a-111665071";
             var request = new PaymentCreateRequest
             {
                 TransactionAmount = valor,
@@ -43,9 +43,9 @@ namespace MercadoPagoPix
                 }
             };
 
-            
+
             payment = await cliente.CreateAsync(request);
-            var id = payment.Id;          
+            var id = payment.Id;
 
             txtQrcode.Text = payment.PointOfInteraction.TransactionData.QrCode;
 
@@ -63,24 +63,23 @@ namespace MercadoPagoPix
                 //Criar um novo Bitmap baseado na MemoryStream
                 //using (Bitmap bmp = new Bitmap(ms))
                 //{
-                    //Local onde vamos salvar a imagem
-                    //string path = Path.Combine("C:\\Users\\Meck Tecnologia\\source\\repos\\Mercado-Pago-sdk\\src\\MercadoPagoPix\\pix.jpg");   /*Server.MapPath("~/cbsa.jpg");*/
+                //Local onde vamos salvar a imagem
+                //string path = Path.Combine("C:\\Users\\Meck Tecnologia\\source\\repos\\Mercado-Pago-sdk\\src\\MercadoPagoPix\\pix.jpg");   /*Server.MapPath("~/cbsa.jpg");*/
 
-                    //Salvar a imagem no formato JPG na raiz do site
-                    //bmp.Save(path, ImageFormat.Jpeg);
+                //Salvar a imagem no formato JPG na raiz do site
+                //bmp.Save(path, ImageFormat.Jpeg);
                 //}
-            } 
+            }
         }
         private async void btnCobranca_Click(object sender, EventArgs e)
         {
             MercadoPago();
         }
-        private async void btnAtualiza_Click(object sender, EventArgs e)
-        {
-            //var resut = payment.StatusDetail;
-            //MercadoPagoConfig.AccessToken = "APP_USR-1720662152161752-090102-3cb06a9b706e27e712b387bf37108af3-111665071";
 
-            
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

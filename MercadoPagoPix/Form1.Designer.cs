@@ -1,4 +1,4 @@
-﻿namespace MercadoPagoPix
+namespace MercadoPagoPix
 {
     partial class Form1
     {
@@ -31,7 +31,6 @@
             btnCobranca = new Button();
             txtQrcode = new TextBox();
             pictureBox1 = new PictureBox();
-            btnAtualiza = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -62,28 +61,18 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // btnAtualiza
-            // 
-            btnAtualiza.Location = new Point(205, 381);
-            btnAtualiza.Name = "btnAtualiza";
-            btnAtualiza.Size = new Size(75, 23);
-            btnAtualiza.TabIndex = 3;
-            btnAtualiza.Text = "Atualizar";
-            btnAtualiza.UseVisualStyleBackColor = true;
-            btnAtualiza.Click += btnAtualiza_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnAtualiza);
             Controls.Add(pictureBox1);
             Controls.Add(txtQrcode);
             Controls.Add(btnCobranca);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -94,6 +83,5 @@
         private Button btnCobranca;
         private TextBox txtQrcode;
         private PictureBox pictureBox1;
-        private Button btnAtualiza;
     }
 }
